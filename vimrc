@@ -101,3 +101,12 @@ nnoremap <C-H> <C-W><C-H>
 " Natural Split Openings
 set splitbelow
 set splitright
+
+" tabs/spaces settings
+set ruler
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" Set colour column
+set colorcolumn=80
