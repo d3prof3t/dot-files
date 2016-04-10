@@ -67,6 +67,10 @@ let g:solarized_termcolors=256
 " Paste Mode
 set pastetoggle=<F2>
 
+" Rebind <Leader> key
+" I like to have it here becuase it is easier to reach than the default and
+" it is next to ``m`` and ``n`` which I use for navigating between tabs.
+let mapleader = ","
 
 " vim-powerline
 python from powerline.vim import setup as powerline_setup
@@ -110,3 +114,23 @@ set expandtab
 
 " Set colour column
 set colorcolumn=80
+
+" Set Line Numbers
+set number
+
+" Make search case insensitive
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" Disable stupid backup and swap files - they trigger too many events
+" for file system watchers
+set nobackup
+set nowritebackup
+set noswapfile
+
+" easier moving between tabs
+map <Leader>n <esc>:tabprevious<CR>
+map <Leader>m <esc>:tabnext<CR>
+map <Leader>t <esc>:tabnew<CR>
