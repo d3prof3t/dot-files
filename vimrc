@@ -1,5 +1,11 @@
-set nocompatible              " required
-filetype off                  " required
+set nocompatible 				" required
+filetype plugin indent on 			" required
+syntax on 					" required
+
+" mouse settings
+if has('mouse')
+  set mouse=a
+endif
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -42,9 +48,6 @@ Plugin 'kien/ctrlp.vim'
 
 " Git Integration
 Plugin 'tpope/vim-fugitive'
-
-" Powerline
-" Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " Airline
 Plugin 'vim-airline/vim-airline'
@@ -136,12 +139,7 @@ let python_highlight_all=1
 syntax on
 
 " theme enable
-if has('gui_running')
-  set background=dark
-  colorscheme solarized
-else
-  colorscheme gruvbox
-endif
+colorscheme gruvbox
 
 " nerdtree config
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
@@ -181,3 +179,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 let g:syntastic_python_checkers = ['flake8']
+
+" always show a status line
+set laststatus=2
