@@ -7,6 +7,8 @@ if has('mouse')
   set mouse=a
 endif
 
+set relativenumber
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -149,8 +151,11 @@ map <C-n> :NERDTreeToggle<CR>
 " set numbers
 set nu
 
-" set incremental search
+" search
 set incsearch
+set ignorecase
+set smartcase
+set gdefault
 
 " clipboard config
 set clipboard=unnamed
@@ -159,7 +164,7 @@ set clipboard=unnamed
 set encoding=utf-8
 
 " SimplyFold
-let g:SimpylFold_docstring_preview=1
+let g:SimplyFold_docstring_preview=1
 
 " Autorun Flake8 on Write
 autocmd BufWritePost *.py call Flake8()
