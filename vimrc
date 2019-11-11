@@ -7,8 +7,6 @@ if has('mouse')
   set mouse=a
 endif
 
-set relativenumber
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -54,6 +52,9 @@ Plugin 'tpope/vim-fugitive'
 " Airline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+
+" RustLang
+Plugin 'rust-lang/rust.vim'
 
 " add all your plugins here (note older versions of Vundle
 " used Bundle instead of Plugin)
@@ -150,12 +151,10 @@ map <C-n> :NERDTreeToggle<CR>
 
 " set numbers
 set nu
+set rnu
 
-" search
+" set incremental search
 set incsearch
-set ignorecase
-set smartcase
-set gdefault
 
 " clipboard config
 set clipboard=unnamed
@@ -164,9 +163,9 @@ set clipboard=unnamed
 set encoding=utf-8
 
 " SimplyFold
-let g:SimplyFold_docstring_preview=1
+let g:SimpylFold_docstring_preview=1
 
-" Autorun Flake8 on Write
+" Autorun Flake8 on writing Python files
 autocmd BufWritePost *.py call Flake8()
 let g:flake8_show_in_gutter=1
 let g:flake8_error_marker='EE'     " set error marker to 'EE'
