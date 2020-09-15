@@ -1,6 +1,7 @@
-set nocompatible 				" required
+set encoding=utf-8                  " required
+set nocompatible                    " required
 filetype plugin indent on 			" required
-syntax on 					" required
+syntax on 					        " required
 
 " mouse settings
 if has('mouse')
@@ -17,27 +18,16 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" Color theme
+Plugin 'jnurmine/Zenburn'
+Plugin 'morhetz/gruvbox'
+
 " Code Fold
 Plugin 'tmhedberg/SimpylFold'
-
-" Auto-Indent Python
-Plugin 'vim-scripts/indentpython.vim'
-
-" Python Autocomplete
-Plugin 'davidhalter/jedi-vim'
 
 " Super Tab
 Plugin 'ervandew/supertab'
 
-" Syntax check
-Plugin 'vim-syntastic/syntastic'
-
-" Flake8
-Plugin 'nvie/vim-flake8'
-
-" Color theme
-Plugin 'jnurmine/Zenburn'
-Plugin 'morhetz/gruvbox'
 
 " nerdtree
 Plugin 'scrooloose/nerdtree'
@@ -53,8 +43,17 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-" RustLang
-Plugin 'rust-lang/rust.vim'
+" Polyglot - all languages support
+Plugin 'sheerun/vim-polyglot'
+
+" Autocompleter
+Plugin 'valloric/youcompleteme'
+
+" Syntax check
+Plugin 'scrooloose/syntastic'
+
+" Flake8
+Plugin 'nvie/vim-flake8'
 
 " add all your plugins here (note older versions of Vundle
 " used Bundle instead of Plugin)
@@ -94,38 +93,35 @@ let g:SimpylFold_docstring_preview=1
 " Remove trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
 
-" pep8 indentation
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix
+" set numbers
+set nu
+set rnu
 
-" html/js/css indentations
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2
+" set incremental search
+set incsearch
+
+" clipboard config
+set clipboard=unnamed
+
+" set encoding
+set encoding=utf-8
+" au BufNewFile,BufRead *.py
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set textwidth=119
+set expandtab
+set autoindent
+set fileformat=unix
+"
+" " html/js/css indentations
+" au BufNewFile,BufRead *.js, *.html, *.css
+"     \ set tabstop=2 |
+"     \ set softtabstop=2 |
+"     \ set shiftwidth=2
 
 " define a map leader
 let mapleader = "\<Space>"
-
-" jedi config
-let g:jedi#use_tabs_not_buffers = 1
-let g:jedi#popup_select_first = 0
-let g:jedi#show_call_signatures = "1"
-" autocmd FileType python setlocal completeopt-=preview
-" let g:jedi#goto_command = "<leader>d"
-" let g:jedi#goto_assignments_command = "<leader>g"
-" let g:jedi#goto_definitions_command = ""
-" let g:jedi#documentation_command = "K"
-" let g:jedi#usages_command = "<leader>n"
-" let g:jedi#completions_command = "<C-Space>"
-" let g:jedi#rename_command = "<leader>r"
-
 
 " python with virtualenv support
 " py << EOF
@@ -139,6 +135,7 @@ let g:jedi#show_call_signatures = "1"
 
 " python syntax highlighting
 let python_highlight_all=1
+
 syntax on
 
 " theme enable
@@ -149,18 +146,6 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 autocmd VimEnter * NERDTree | wincmd p
 map <C-n> :NERDTreeToggle<CR>
 
-" set numbers
-set nu
-set rnu
-
-" set incremental search
-set incsearch
-
-" clipboard config
-set clipboard=unnamed
-
-" set encoding
-set encoding=utf-8
 
 " SimplyFold
 let g:SimpylFold_docstring_preview=1
@@ -182,7 +167,18 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
+let g:syntastic_aggregate_errors = 1
+
+" filetype based syntastic checkers
 let g:syntastic_python_checkers = ['flake8']
 
 " always show a status line
 set laststatus=2
+
+" c lang tools
+let  g:C_UseTool_cmake = 'yes'
+let  g:C_UseTool_doxygen = 'yes'
+
+" disable clangd and use libclang
+" let g:ycm_use_clangd = 0
+let g:ycm_global_ycm_extra_conf = '/Users/saurabh/.vim/bundle/youcompleteme/third_party/ycmd/ycmd/.ycm_extra_conf.py'
